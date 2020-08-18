@@ -2,13 +2,7 @@
 
 namespace app\core;
 
-use app\core\View;
-
-/*
-
-    //
-
-*/
+use app\core\Template;
 
 class Router {
 
@@ -43,7 +37,8 @@ class Router {
 
     static function ErrorPage($code) {
         http_response_code($code);
-        View::errorCode($code);
+        $smarty = new Template();
+        $smarty->errorCode($code);
 
         exit();
     }

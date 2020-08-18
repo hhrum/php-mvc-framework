@@ -5,21 +5,22 @@ namespace app\core;
 class Template extends \Smarty {
     
     protected $route;
+    protected $config = require "app/config/template.php";
     public $layout = "default";
 
-    public function __construct($route)
+    public function __construct($route = [])
     {
         global $main_config;
+        
         $this->route = $route;
 
         parent::__construct();
 
-        $config = require "app/config/template.php";
         
-        $this->setTemplateDir($config['template']);
-        $this->setCompileDir($config['template_c']);
-        $this->setConfigDir($config['config']);
-        $this->setCacheDir($config['cache']);
+        $this->setTemplateDir($this->config['template']);
+        $this->setCompileDir($this->config['template_c']);
+        $this->setConfigDir($this->config['config']);
+        $this->setCacheDir($this->config['cache']);
 
         $this->assign("url", $main_config['url']);
     }
