@@ -19,6 +19,9 @@ class PDOSingleton
         throw new \Exception("Cannot unserialize a singleton.");
     }
 
+    /**
+     * Метод, возвращающий наше единственное PDO
+     */
     public static function getInstance(): \PDO
     {
         $cls = static::class;
@@ -29,13 +32,20 @@ class PDOSingleton
         return self::$instances[$cls];
     }
 
+    /**
+     * Создания объекта PDO
+     */
     protected function instance()
     {
-        $db_config = require "app/config/db.php";
-        $dsn = $db_config['driver'] . ":host=" . $db_config['host'] . ";dbname=" . $db_config['dbname'];
+        try {
+            $db_config = require "app/config/db.php";
+            $dsn = $db_config['driver'] . ":host=" . $db_config['host'] . ";dbname=" . $db_config['dbname'];
 
-        $db = new \PDO($dsn, $db_config['username'], $db_config['password']);
+            $db = new \PDO($dsn, $db_config['username'], $db_config['password']);
 
-        return $db;
+            return $db;
+        } catch (\Throwable $th) {
+            die("Shit");
+        }
     }
 }
