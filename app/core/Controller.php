@@ -3,8 +3,9 @@
 namespace app\core;
 
 use app\core\Template;
+use app\lib\Responser;
 
-abstract class Controller {
+abstract class Controller extends Responser {
 
     public $route;
     public $view;
