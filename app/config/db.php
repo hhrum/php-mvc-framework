@@ -1,8 +1,9 @@
 <?php
 
 return [
+    "driver" => "mysql",
     "host" => "localhost",
-    "dbname" => "test_db",
-    "user" => "root",
+    "dbname" => "",
+    "username" => "",
     "password" => "",
 ];
