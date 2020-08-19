@@ -1,9 +1,11 @@
 <?php
 
-require 'application/lib/Dev.php';
-require 'application/lib/rb.php';
+require 'app/lib/Dev.php';
+require 'app/lib/Smarty/Smarty.class.php';
 
-use application\core\Router;
+use app\core\Router;
+
+$main_config = require "app/config/main.php";
 
 spl_autoload_register(function($class) {
     $path = str_replace('\\', '/', $class.'.php');
