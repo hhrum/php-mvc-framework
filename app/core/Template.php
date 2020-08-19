@@ -31,7 +31,7 @@ class Template extends \Smarty {
      * @param string $title Заголовок страницы
      */
     public function render($title) {
-        $layout_file = 'layouts/' . $this->layout . '.tpl';
+        $layout_file = '_layouts/' . $this->layout . '.tpl';
         $layout_path = $this->config['template'] . '/' . $layout_file;
         $tpl_file = $this->route['controller'] . '/' . $this->route['action'] . '.tpl';
         $tpl_path = $this->config['template'] . '/' . $tpl_file;
@@ -51,7 +51,7 @@ class Template extends \Smarty {
      * @param string $code код ошибки
      */
     public function errorCode($code) {
-        $file = "errors/$code.tpl";
+        $file = "_errors/$code.tpl";
         $path = $this->config['template'] . '/' . $file;
         
         if(file_exists($path)) {
