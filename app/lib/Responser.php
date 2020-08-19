@@ -7,7 +7,12 @@ namespace app\lib;
  */
 class Responser
 {
-    public $response_messages = require "app/config/response_msg.php";
+    public $response_messages;
+
+    public function __construct()
+    {
+        $this->response_messages = require "app/config/response_msg.php";
+    }
 
     public static function redirectResponse($url)
     {

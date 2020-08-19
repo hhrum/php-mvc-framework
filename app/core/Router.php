@@ -20,7 +20,7 @@ class Router {
         $controller_name = ucfirst($controller_name) . "Controller";
         $action_name = ucfirst($action_name) . "Action";
 
-        $controller_path = "application\controllers\\" . $controller_name;
+        $controller_path = "app\controllers\\" . $controller_name;
 
         if(class_exists($controller_path) && method_exists($controller_path, $action_name)) {
 
