@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    {$ include file=$conten}
+    {include file=$content}
 </body>
 
 </html>

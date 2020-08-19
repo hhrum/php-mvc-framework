@@ -11,7 +11,7 @@ abstract class Controller extends Responser {
     public $view;
 
     public function __construct($route) {
-
+        parent::__construct();
         $this->route = $route;
         $this->template = new Template($route);
 

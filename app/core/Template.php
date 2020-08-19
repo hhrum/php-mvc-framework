@@ -5,7 +5,7 @@ namespace app\core;
 class Template extends \Smarty {
     
     protected $route;
-    protected $config = require "app/config/template.php";
+    protected $config;
     public $layout = "default";
 
     public function __construct($route = [])
@@ -13,9 +13,9 @@ class Template extends \Smarty {
         global $main_config;
         
         $this->route = $route;
+        $this->config = require "app/config/template.php";
 
         parent::__construct();
-
         
         $this->setTemplateDir($this->config['template']);
         $this->setCompileDir($this->config['template_c']);
@@ -39,7 +39,7 @@ class Template extends \Smarty {
         if (file_exists($layout_path) && file_exists($tpl_path)) {
             $this->assign("title", $title);
             $this->assign("controller", $this->route['controller']);
-            $this->assign("tpl_name", $tpl_file);
+            $this->assign("content", $tpl_file);
 
             $this->display($layout_file);
         }
